@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Status</th>
+                <th>Prazo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tarefa : ${tarefas}">
+                <td th:text="${tarefa.usuario}">Usuário</td>
+                <td th:text="${tarefa.titulo}">Título</td>
+                <td th:text="${tarefa.descricao}">Descrição</td>
+                <td th:text="${tarefa.status}">Status</td>
+                <td th:text="${tarefa.prazo}">Prazo</td>
+                <td>
+                    <a th:href="@{/tarefas/excluir/{id}(id=${tarefa.id})}">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/tarefas/nova">Adicionar Nova Tarefa</a>
+</body>
+</html>
